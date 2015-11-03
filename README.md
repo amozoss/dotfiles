@@ -25,3 +25,12 @@ sudo apt-get install python-dev cmake
 cd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer --gocode-completer
 ```
+
+Setup Zing:
+```
+git clone https://github.com/jewel/zing.git ~/bin/zing
+
+export PATH="$HOME/bin:$HOME/bin/zing:$PATH"
+
+ln -s ~/bin/zing/zing ~/bin/,z
+```
