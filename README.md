@@ -1,5 +1,15 @@
 # dotfiles
 
+Setup `~/.gitconfig`:
+```
+[user]
+  email = myemail@email.com
+  name = myname
+[core]
+  editor = /usr/bin/vim
+  excludesfile = ~/.global_gitignore
+```
+
 Setup vundle:
 
 ```
