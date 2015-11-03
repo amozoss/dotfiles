@@ -38,6 +38,9 @@ let mapleader=","
 let g:ctrlp_map = '<Leader>t'
 nnoremap <leader>a *:AgFromSearch<cr>
 
+let g:airline_theme='solarized'                                                                                                                                                                                                                                                                                                                                       
+let g:airline_powerline_fonts = 1 
+
 " if you prefer a leader
 
 noremap <silent> <Leader>z :call Zing()<CR>
