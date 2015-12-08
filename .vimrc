@@ -35,6 +35,7 @@ set shiftwidth=2
 set list listchars=tab:»·,trail:·
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set hlsearch
 
 let mapleader=","
 let g:ctrlp_map = '<Leader>t'
