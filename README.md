@@ -34,3 +34,20 @@ export PATH="$HOME/bin:$HOME/bin/zing:$PATH"
 
 ln -s ~/bin/zing/zing ~/bin/,z
 ```
+
+Setup Terminal Font and Colors
+```
+Run Solarized Dark.terminal
+```
+Install powerline fonts:
+```
+git clone --depth 1 https://github.com/powerline/fonts.git
+cd fonts
+./install.sh
+```
+Terminal > Preferences > Text > Ubuntu Mono derivative Powerline 14 pt
+
+Install go utilities:
+```
+:GoInstallBinaries
+```
