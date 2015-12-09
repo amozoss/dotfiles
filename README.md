@@ -28,7 +28,7 @@ cd ~/.vim/bundle/YouCompleteMe
 Mac:
 ```
 brew update; brew uninstall python; brew uninstall vim; brew install python; brew install vim;
-~/.vim/bundle/YouCompleteMe/install.sh
+~/.vim/bundle/YouCompleteMe/install.sh --clang-completer --gocode-completer
 ```
 
 Setup Zing:
