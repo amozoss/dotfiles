@@ -25,6 +25,11 @@ sudo apt-get install python-dev cmake
 cd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer --gocode-completer
 ```
+Mac:
+```
+brew update; brew uninstall python; brew uninstall vim; brew install python; brew install vim;
+~/.vim/bundle/YouCompleteMe/install.sh
+```
 
 Setup Zing:
 ```
