@@ -11,6 +11,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-sensible'
 Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
+Plugin 'leafgarland/typescript-vim'
 
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -19,14 +20,20 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'rking/ag.vim'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'saltstack/salt-vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set hlsearch
+set smartcase
 set background=dark
 colorscheme solarized
 let g:go_fmt_autosave = 0
+let &colorcolumn=join(range(81,999),",")
 
 set et
 set tabstop=2
@@ -35,14 +42,21 @@ set shiftwidth=2
 set list listchars=tab:»·,trail:·
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-set hlsearch
 
 let mapleader=","
-let g:ctrlp_map = '<Leader>t'
-nnoremap <leader>a *:AgFromSearch<cr>
+let g:ctrlp_map = '<Leader>f'
+nnoremap <leader>t :CtrlPTag<cr>
 
-let g:airline_theme='solarized'                                                                                                                                                                                                                                                                                                                                       
-let g:airline_powerline_fonts = 1 
+" move up the directory hierarchy until it has found the file
+set tags=tags;/
+nnoremap <leader>a *:AgFromSearch<cr>
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+nmap <Leader>hu <Plug>GitGutterRevertHunk
+"let g:ag_working_path_mode="r"
+
+let g:airline_theme='solarized'
+let g:airline_powerline_fonts = 1
+
 
 " if you prefer a leader
 
@@ -62,6 +76,7 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>dd <Plug>(go-def)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
 
 let g:go_highlight_functions = 1 
 let g:go_highlight_methods = 1 
@@ -96,3 +111,4 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
