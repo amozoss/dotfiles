@@ -33,7 +33,8 @@ set hlsearch
 set smartcase
 set background=dark
 colorscheme solarized
-let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports" 
 let &colorcolumn=join(range(81,999),",")
 
 set et
