@@ -86,6 +86,7 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>dd <Plug>(go-def)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gi <Plug>(go-implements)
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
@@ -93,10 +94,10 @@ au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
 au FileType go nmap <leader>i <Plug>(go-info)
 
 
-let g:go_highlight_functions = 1 
-let g:go_highlight_methods = 1 
-let g:go_highlight_structs = 1 
-let g:go_highlight_operators = 1 
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 let g:tagbar_type_go = {
