@@ -7,14 +7,17 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-sensible'
 Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'jparise/vim-graphql'
 
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/YouCompleteMe'
@@ -23,6 +26,9 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'saltstack/salt-vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'aklt/plantuml-syntax'
+Plugin 'elixir-lang/vim-elixir'
 
 
 " All of your Plugins must be added before the following line
@@ -33,8 +39,8 @@ set hlsearch
 set smartcase
 set background=dark
 colorscheme solarized
+let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
-let g:go_fmt_command = "goimports" 
 let &colorcolumn=join(range(81,999),",")
 
 set et
@@ -59,6 +65,8 @@ nmap <Leader>hu <Plug>GitGutterRevertHunk
 let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
 
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
 
 " if you prefer a leader
 
@@ -78,6 +86,11 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>dd <Plug>(go-def)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+au FileType go nmap <leader>i <Plug>(go-info)
 
 
 let g:go_highlight_functions = 1 
