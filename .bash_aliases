@@ -15,3 +15,11 @@ export NVM_DIR="/home/dan/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm                                                                                                                                                                                                                                                                                                     
                                                                                                                                                                                                                                                                                                                                                                       
 export GIT_EDITOR=vim  
+
+HISTTIMEFORMAT='%F %T '
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=""                       # unlimited bash history
+shopt -s histappend                      # append to history, don't overwrite it
+
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
