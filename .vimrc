@@ -37,8 +37,13 @@ filetype plugin indent on    " required
 
 set hlsearch
 set smartcase
+
 set background=dark
 colorscheme solarized
+" fixes messed up colors sometimes
+" let g:solarized_termtrans=1
+" let g:solarized_termcolors=256
+
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
 let &colorcolumn=join(range(81,999),",")
