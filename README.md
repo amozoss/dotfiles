@@ -17,6 +17,10 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim
 :PluginInstall
 ```
+Setup vim-undo:
+```
+mkdir ~/.vim/undo
+```
 
 Setup YouCompleteMe:
 
