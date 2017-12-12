@@ -44,6 +44,10 @@ set smartcase
 set background=dark
 colorscheme solarized
 
+set undofile
+set undodir=~/.vim/undo
+set undolevels=1000
+set undoreload=10000
 
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
