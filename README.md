@@ -21,6 +21,10 @@ Setup vim-undo:
 ```
 mkdir ~/.vim/undo
 ```
+Setup keychain
+```
+sudo apt install keychain
+```
 
 Setup YouCompleteMe:
 
