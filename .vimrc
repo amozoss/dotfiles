@@ -29,6 +29,7 @@ Plugin 'saltstack/salt-vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'aklt/plantuml-syntax'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'mtscout6/vim-cjsx'
 
 
 " All of your Plugins must be added before the following line
