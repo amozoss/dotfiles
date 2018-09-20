@@ -40,8 +40,8 @@ set hlsearch
 set smartcase
 
 " fixes messed up colors sometimes
-" let g:solarized_termtrans=1
-" let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
+"let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
@@ -52,7 +52,6 @@ set undoreload=10000
 
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
-let &colorcolumn=join(range(81,999),",")
 
 set et
 set tabstop=2

@@ -49,9 +49,20 @@ ln -s ~/bin/zing/zing ~/bin/,z
 ```
 
 Setup Terminal Font and Colors
+mac:
 ```
 Run Solarized Dark.terminal
 ```
+ubuntu:
+https://github.com/Anthony25/gnome-terminal-colors-solarized
+```
+sudo apt install dconf-cli
+git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git
+cd gnome-terminal-colors-solarized
+./install.sh
+```
+
+
 Install powerline fonts:
 ```
 git clone --depth 1 https://github.com/powerline/fonts.git
