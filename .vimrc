@@ -1,39 +1,37 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
+
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-sensible'
-Plugin 'fatih/vim-go'
-Plugin 'kien/ctrlp.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'jparise/vim-graphql'
+Plug 'VundleVim/Vundle.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-sensible'
+Plug 'fatih/vim-go'
+Plug 'kien/ctrlp.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'jparise/vim-graphql'
 
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'majutsushi/tagbar'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rking/ag.vim'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'saltstack/salt-vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'aklt/plantuml-syntax'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'mtscout6/vim-cjsx'
-
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'majutsushi/tagbar'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rking/ag.vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'saltstack/salt-vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'aklt/plantuml-syntax'
+Plug 'elixir-lang/vim-elixir'
+Plug 'mtscout6/vim-cjsx'
+call plug#end()
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 
 set hlsearch
