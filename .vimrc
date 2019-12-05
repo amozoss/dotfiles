@@ -4,31 +4,31 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
+Plug 'Valloric/YouCompleteMe'
 Plug 'VundleVim/Vundle.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'aklt/plantuml-syntax'
 Plug 'altercation/vim-colors-solarized'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-sensible'
+Plug 'bling/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
+Plug 'elixir-lang/vim-elixir'
 Plug 'fatih/vim-go'
+Plug 'jparise/vim-graphql'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'jparise/vim-graphql'
-
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'majutsushi/tagbar'
-Plug 'Valloric/YouCompleteMe'
-Plug 'rking/ag.vim'
-Plug 'edkolev/tmuxline.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'saltstack/salt-vim'
-Plug 'kchmck/vim-coffee-script'
-Plug 'aklt/plantuml-syntax'
-Plug 'elixir-lang/vim-elixir'
 Plug 'mtscout6/vim-cjsx'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'saltstack/salt-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-ruby/vim-ruby'
 call plug#end()
 
 " All of your Plugins must be added before the following line
@@ -60,12 +60,12 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 let mapleader=","
-let g:ctrlp_map = '<Leader>f'
 nnoremap <leader>t :CtrlPTag<cr>
+nnoremap <leader>f :Files<cr>
 
 " move up the directory hierarchy until it has found the file
 set tags=tags;/
-nnoremap <leader>a *:AgFromSearch<cr>
+nnoremap <leader>r *:Find<cr>
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 "let g:ag_working_path_mode="r"
@@ -75,11 +75,14 @@ let g:airline_powerline_fonts = 1
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
+set grepprg=rg\ --vimgrep
+nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
 
 " if you prefer a leader
 
 noremap <silent> <Leader>z :call Zing()<CR>
 inoremap <silent> <Leader>z <C-C>:call Zing()<CR>
+
 
 func! Zing()
   exec "w"

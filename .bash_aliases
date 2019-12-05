@@ -30,3 +30,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 /usr/bin/keychain $HOME/.ssh/id_rsa_work
 source $HOME/.keychain/$HOSTNAME-sh
 
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,.cache,public}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+bind -x '"\C-p": vim $(fzf);'
+export FZF_TMUX=1

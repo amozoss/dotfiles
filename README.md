@@ -28,16 +28,46 @@ sudo apt install keychain
 ```
 
 Setup YouCompleteMe:
-
 ```
 sudo apt-get install python-dev cmake
-cd ~/.vim/bundle/YouCompleteMe
+cd ~/.vim/plugged/YouCompleteMe
 ./install.py --clang-completer --gocode-completer
 ```
 Mac:
 ```
-brew update; brew uninstall python; brew uninstall vim; brew install python; brew install vim;
-~/.vim/bundle/YouCompleteMe/install.py --clang-completer --gocode-completer
+brew install cmake macvim
+~/.vim/plugged/YouCompleteMe/install.py --clang-completer --gocode-completer
+```
+
+Setup fzf
+```
+sudo apt install fzf
+```
+
+Mac:
+```
+brew install fzf
+```
+
+setup ripgrep
+```
+sudo apt install ripgrep
+```
+
+Mac:
+```
+brew install repgrep
+```
+
+
+Setup shellcheck
+```
+sudo apt install shellcheck
+```
+
+Mac:
+```
+brew install shellcheck
 ```
 
 Setup Zing:
@@ -75,4 +105,11 @@ Terminal > Preferences > Text > Ubuntu Mono derivative Powerline 14 pt
 Install go utilities:
 ```
 :GoInstallBinaries
+```
+
+Mac fix key repeat
+
+```
+defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 ```
