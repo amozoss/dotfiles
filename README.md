@@ -113,3 +113,13 @@ Mac fix key repeat
 defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 ```
+
+Remap menu to ctrl
+```
+setxkbmap -option ctrl:menu_rctrl
+```
+
+```
+$ vim /etc/default/keyboard
+XKBOPTIONS="ctrl:menu_rctrl"
+```

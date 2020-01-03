@@ -9,7 +9,7 @@ PS1="$BLUE\u@\h$NO_COLOR:\w$YELLOW\$(__git_ps1 )$NO_COLOR\$ "
  
 #export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64/jre"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-export PATH="$HOME/bin:$HOME/bin/zing:$PATH"
+export PATH="$HOME/bin:$HOME/dotfiles/bin:$HOME/bin/zing:$PATH"
 
 export NVM_DIR="/home/dan/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -17,15 +17,13 @@ export NVM_DIR="/home/dan/.nvm"
 export GIT_EDITOR=vim
 
 # unlimited bash history
-export HISTFILESIZE=
-export HISTSIZE=
+export HISTSIZE=""
 
 shopt -s histappend                      # append to history, don't overwrite it
 
 HISTTIMEFORMAT='%F %T '
+#export HISTCONTROL=ignoreboth:erasedups
 
-# Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 /usr/bin/keychain $HOME/.ssh/id_rsa_work
 source $HOME/.keychain/$HOSTNAME-sh
@@ -35,3 +33,5 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 bind -x '"\C-p": vim $(fzf);'
 export FZF_TMUX=1
+
+alias ,f="fzf --bind 'enter:execute(vim {1} < /dev/tty)'"

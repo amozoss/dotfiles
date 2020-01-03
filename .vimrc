@@ -29,6 +29,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 call plug#end()
 
 " All of your Plugins must be added before the following line
@@ -59,13 +62,15 @@ set list listchars=tab:»·,trail:·
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+
 let mapleader=","
 nnoremap <leader>t :CtrlPTag<cr>
 nnoremap <leader>f :Files<cr>
 
 " move up the directory hierarchy until it has found the file
 set tags=tags;/
-nnoremap <leader>r *:Find<cr>
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 "let g:ag_working_path_mode="r"
@@ -75,8 +80,8 @@ let g:airline_powerline_fonts = 1
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-set grepprg=rg\ --vimgrep
 nnoremap <silent> <Leader>r :Rg <C-R><C-W><CR>
+set grepprg=rg\ --vimgrep
 
 " if you prefer a leader
 
@@ -98,7 +103,6 @@ au FileType go nmap <Leader>dd <Plug>(go-def)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>gi <Plug>(go-implements)
-au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
