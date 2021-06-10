@@ -22,17 +22,17 @@ Setup vim-undo:
 ```
 mkdir ~/.vim/undo
 ```
+
 Setup keychain
 ```
 sudo apt install keychain
 ```
 
-Setup YouCompleteMe:
+Setup Coc settings
 ```
-sudo apt-get install python-dev cmake
-cd ~/.vim/plugged/YouCompleteMe
-./install.py --clang-completer --gocode-completer
+ln -s dotfiles/coc-settings.json .vim/
 ```
+
 Mac:
 ```
 brew install cmake macvim
