@@ -21,6 +21,7 @@ export HISTSIZE=""
 
 shopt -s histappend                      # append to history, don't overwrite it
 
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 HISTTIMEFORMAT='%F %T '
 #export HISTCONTROL=ignoreboth:erasedups
 
