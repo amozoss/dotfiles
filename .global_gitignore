@@ -3,3 +3,4 @@
 *.zing
 GPUCache
 .DS_Store
+.byebug_history

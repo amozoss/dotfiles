@@ -13,6 +13,7 @@
     "scss",
     "go"
   ],
+  "solargraph.promptDownload": false,
   "languageserver": {
     "golang": {
       "command": "gopls",

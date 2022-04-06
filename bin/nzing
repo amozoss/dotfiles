@@ -1,0 +1,23 @@
+#!/bin/bash
+
+touch $1
+chmod a+x $1
+LANG=${2:"ruby"}
+
+if [ "$2" = "rails" ]; then
+  echo "#!/usr/bin/env -S /Users/dan/projects/tellspin/bin/rails runner" > $1
+else
+  echo "#!/usr/bin/env" > $1
+fi
+
+
+if [ ! -f .zing ]; then
+  echo "#!/bin/bash" > .zing
+  echo "" >> .zing
+  echo "./$1" >> .zing
+  chmod a+x .zing
+fi
+
+vim $1
+
+

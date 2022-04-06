@@ -1,6 +1,7 @@
 
 set nocompatible " be iMproved, required
 filetype off     " required
+set noswapfile
 
 " Keep Plug commands between plug#begin() and plug#end().
 call plug#begin()
@@ -52,7 +53,7 @@ set lazyredraw
 set updatetime=300
 
 " CoC extensions
-let g:coc_global_extensions = ['coc-prettier', 'coc-tsserver', 'coc-go', 'coc-html', 'coc-css', 'coc-json']
+let g:coc_global_extensions = ['coc-prettier',  'coc-tsserver', 'coc-go', 'coc-html', 'coc-css', 'coc-json', 'coc-tailwindcss']
 
 " Add CoC ESLint if ESLint is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
@@ -99,6 +100,7 @@ au FileType go nmap <leader>i <Plug>(go-info)
 
 nnoremap <leader>t :CtrlPTag<cr>
 nnoremap <leader>f :Files<cr>
+
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -273,6 +275,11 @@ nnoremap <leader>rn :set relativenumber!<cr>
 " If fzf installed using git
 set rtp+=~/.fzf
 
+let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules,.cache,public}/*" 2> /dev/null'
+
+
+
+
 " vim-test shortcut for running tests
 nnoremap <silent><leader>; :TestNearest<CR>
 
@@ -289,3 +296,15 @@ autocmd BufNewFile *.sh              0r ~/dotfiles/skeletons/script.sh
 autocmd BufNewFile *.html            0r ~/dotfiles/skeletons/page.html
 
 
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction

@@ -123,3 +123,8 @@ setxkbmap -option ctrl:menu_rctrl
 $ vim /etc/default/keyboard
 XKBOPTIONS="ctrl:menu_rctrl"
 ```
+
+Install solargraph
+```
+gem install solargraph
+```
