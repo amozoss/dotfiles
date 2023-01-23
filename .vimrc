@@ -26,6 +26,7 @@ Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'styled-components/vim-styled-components'
 
 Plug 'vim-airline/vim-airline'    " Vim powerline
+Plug 'kchmck/vim-coffee-script'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'           " Set up fzf and fzf.vim
@@ -46,14 +47,13 @@ set background=dark
 " https://github.com/romainl/flattened
 colorscheme flattened_dark
 
-
 set wildmenu " when opening a file with e.g. :e ~/.vim<TAB> there is a graphical menu of all the matches
 set ttyfast
 set lazyredraw
 set updatetime=300
 
 " CoC extensions
-let g:coc_global_extensions = ['coc-prettier',  'coc-tsserver', 'coc-go', 'coc-html', 'coc-css', 'coc-json', 'coc-tailwindcss']
+let g:coc_global_extensions = ['coc-prettier',  'coc-tsserver', 'coc-go', 'coc-html', 'coc-css', 'coc-json', 'coc-tailwindcss', 'coc-solargraph']
 
 " Add CoC ESLint if ESLint is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
@@ -163,18 +163,25 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <C-j>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<C-j>" :
-      \ coc#refresh()
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<TAB>"
+" Use c-j for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to
+" enable no select by `"suggest.noselect": true` in your configuration file
+inoremap <silent> <expr><c-j>
+       \ coc#pum#visible() ? coc#pum#next(1) :
+       \ CheckBackspace() ? "\<C-j>" :
+       \ coc#refresh()
+inoremap <expr><c-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
 
+" Map <tab> for trigger completion, completion confirm, snippet expand and jump
+" like VSCode:
+inoremap <silent><expr> <TAB>
+	\ coc#pum#visible() ? coc#_select_confirm() :
+	\ coc#expandableOrJumpable() ?
+	\ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+	\ CheckBackspace() ? "\<TAB>" :
+	\ coc#refresh()
 
-function! s:check_back_space() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
@@ -279,7 +286,6 @@ let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules,.
 
 
 
-
 " vim-test shortcut for running tests
 nnoremap <silent><leader>; :TestNearest<CR>
 
@@ -288,6 +294,11 @@ let g:fugitive_pty = 0
 
 " Fix syntax highlight for Coc plugin floating errors
 hi CocErrorFloat guifg=Magenta guibg=Magenta
+
+" 0-15 numbers match ANSI colors in Terminal preferences https://jeffkreeftmeijer.com/vim-16-color/
+hi CocMenuSel ctermbg=0 ctermfg=7
+hi CocFloating    ctermbg=8 ctermfg=10
+hi CocFloatThumb  ctermbg=8 ctermfg=10
 
 " Use templates https://vimtricks.com/p/automated-file-templates/
 autocmd BufNewFile *.tsx             0r ~/dotfiles/skeletons/typescript-react.tsx
