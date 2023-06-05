@@ -3,25 +3,33 @@
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "?",
-  "diagnostic.checkCurrentLine": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "typescriptreact",
-    "html",
-    "json",
-    "css",
-    "scss",
-    "go"
-  ],
+  "diagnostic.checkCurrentLine": false,
+  "codeLens.enable": false,
+  "[markdown][css][scss][less][svg][dart][html][rust][typescript][typescriptreact][javascriptreact][go][json]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[javascript][ruby]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "solargraph.autoformat": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
   "solargraph.promptDownload": false,
   "languageserver": {
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
+    },
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"]
     }
   },
   "go.goplsOptions": {
     "staticcheck": true
-  }
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "snippets.ultisnips.pythonPrompt": false
 }

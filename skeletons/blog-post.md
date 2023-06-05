@@ -1,8 +1,8 @@
 ---
-date: '2021-05-04T11:00:42.284Z'
+date: "2023-05-01T11:00:42.284Z"
 title: Tellspin has custom repeating reminders!
 author: Dan Willoughby
-published: true
+published: false
 image: focus-destroyed-by-interruptions
 seoImage: custom-reminder-view
 linkedin: https://www.linkedin.com/posts/dan-willoughby_why-interruptions-are-frustrating-to-developers-activity-6803072613062062081-tfdo

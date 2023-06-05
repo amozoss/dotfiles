@@ -128,3 +128,8 @@ Install solargraph
 ```
 gem install solargraph
 ```
+
+Language servers
+```
+npm install -g @elm-tooling/elm-language-server
+```
