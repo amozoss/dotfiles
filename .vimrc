@@ -38,11 +38,15 @@ Plug 'junegunn/fzf.vim'           " Set up fzf and fzf.vim
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'elixir-editors/vim-elixir'
 
+Plug 'prisma/vim-prisma'
+
 " All of your Plugins must be added before the following line
 call plug#end()              " required
 filetype plugin indent on    " required
 
 let mapleader = ","
+let g:coc_debug = 1
+
 
 " Look and Feel settings
 syntax enable
@@ -57,7 +61,7 @@ set lazyredraw
 set updatetime=300
 
 " CoC extensions
-let g:coc_global_extensions = ['coc-prettier',  'coc-tsserver', 'coc-go', 'coc-html', 'coc-css', 'coc-json', '@yaegassy/coc-tailwindcss3', 'coc-solargraph', 'coc-react-refactor', 'coc-snippets']
+let g:coc_global_extensions = ['coc-prettier', 'coc-elixir', 'coc-tsserver', 'coc-go', 'coc-html', 'coc-css', 'coc-json', '@yaegassy/coc-tailwindcss3', 'coc-solargraph', 'coc-react-refactor', 'coc-snippets', '@yaegassy/coc-volar']
 
 " Add CoC ESLint if ESLint is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
@@ -90,6 +94,10 @@ let g:copilot_filetypes = {
   \ '*': v:false,
   \ 'bash': v:true,
   \ 'css': v:true,
+  \ 'javascript': v:true,
+  \ 'eruby': v:true,
+  \ 'python': v:true,
+  \ 'go': v:true,
   \ 'dockerfile': v:true,
   \ 'git': v:true,
   \ 'gitcommit': v:true,
@@ -126,6 +134,13 @@ if $VIM_PRIVATE
 endif
 
 " ******* AI ********
+"
+let g:vim_ai_chat = {
+\  "options": {
+\    "model": "gpt-4",
+\    "temperature": 0.2,
+\  },
+\}
 
 " complete text on the current line or in visual selection
 nnoremap <leader>ai :AI<CR>
@@ -179,6 +194,7 @@ endfunc
 
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
+"let g:airline_solarized_bg='light'
 let g:airline_powerline_fonts = 1
 
 " key bindings
@@ -211,7 +227,7 @@ nmap <leader>ae  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Format
-" nmap <leader>f   :CocCommand prettier.formatFile<CR>
+nmap <leader>ll   :CocCommand prettier.formatFile<CR>
 
 " disable all linters as that is taken care of by coc.nvim
 let g:go_diagnostics_enabled = 0
@@ -313,6 +329,11 @@ set smartindent
 " Disable all bells and whistles
 set noerrorbells visualbell t_vb=
 
+" Set default encoding to utf-8
+set encoding=utf-8
+set termencoding=utf-8
+
+
 " Tab Options
 set expandtab
 set shiftwidth=2
@@ -322,9 +343,8 @@ set softtabstop=2 " Number of spaces a tab counts when editing
 " Delete empty space from the end of lines on every save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Set default encoding to utf-8
-set encoding=utf-8
-set termencoding=utf-8
+
+set list lcs=trail:·,tab:»·
 
 
 " Disable backups and swap files
@@ -379,7 +399,7 @@ nnoremap <leader>rn :set relativenumber!<cr>
 " If fzf installed using git
 set rtp+=~/.fzf
 
-let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules,.cache,public}/*" 2> /dev/null'
+let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules,.cache,public,deps,_build,.elixir_ls}/*" 2> /dev/null'
 
 " Yank to tmux buffer
 nnoremap <leader>c :call system("tmux load-buffer -", @0)

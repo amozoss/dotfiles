@@ -5,7 +5,7 @@
   "diagnostic.infoSign": "?",
   "diagnostic.checkCurrentLine": false,
   "codeLens.enable": false,
-  "[markdown][css][scss][less][svg][dart][html][rust][typescript][typescriptreact][javascriptreact][go][json]": {
+  "[markdown][css][scss][less][svg][dart][html][rust][typescript][typescriptreact][javascriptreact][go][json][elixir]": {
     "coc.preferences.formatOnSave": true
   },
   "[javascript][ruby]": {
@@ -13,7 +13,7 @@
   },
   "solargraph.autoformat": true,
   "solargraph.diagnostics": true,
-  "solargraph.formatting": true,
+  "solargraph.formatting": false,
   "solargraph.promptDownload": false,
   "languageserver": {
     "golang": {
@@ -30,6 +30,7 @@
   "go.goplsOptions": {
     "staticcheck": true
   },
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
   "tailwindCSS.emmetCompletions": true,
   "snippets.ultisnips.pythonPrompt": false
 }
