@@ -133,6 +133,12 @@ if $VIM_PRIVATE
   let b:copilot_enabled = { v:false }
 endif
 
+" ******* Elixir ******
+"
+au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+au BufRead,BufNewFile mix.lock set filetype=elixir
+
 " ******* AI ********
 "
 let g:vim_ai_chat = {

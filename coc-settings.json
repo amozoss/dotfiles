@@ -5,7 +5,7 @@
   "diagnostic.infoSign": "?",
   "diagnostic.checkCurrentLine": false,
   "codeLens.enable": false,
-  "[markdown][css][scss][less][svg][dart][html][rust][typescript][typescriptreact][javascriptreact][go][json][elixir]": {
+  "[markdown][css][scss][less][svg][dart][html][rust][typescript][typescriptreact][javascriptreact][go][json][elixir][heex][eelixir]": {
     "coc.preferences.formatOnSave": true
   },
   "[javascript][ruby]": {
@@ -25,6 +25,11 @@
       "command": "elm-language-server",
       "filetypes": ["elm"],
       "rootPatterns": ["elm.json"]
+    },
+    "elixirLS": {
+      "command": "~/.elixir-ls/release/language_server.sh",
+      "filetypes": ["elixir", "eelixir", "heex"],
+      "rootPatterns": ["mix.exs"]
     }
   },
   "go.goplsOptions": {
