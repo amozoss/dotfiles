@@ -1,23 +1,48 @@
 #!/bin/bash
 
-touch $1
-chmod a+x $1
-LANG=${2:"ruby"}
+LANG=$2
+DIR_NAME=zings
 
-if [ "$2" = "rails" ]; then
-  echo "#!/usr/bin/env -S /Users/dan/projects/tellspin/bin/rails runner" > $1
-else
-  echo "#!/usr/bin/env" > $1
-fi
-
+mkdir -p $DIR_NAME
 
 if [ ! -f .zing ]; then
   echo "#!/bin/bash" > .zing
   echo "" >> .zing
-  echo "./$1" >> .zing
+
+  if [ -n "$1" ]; then
+    echo "./$1" >> .zing
+  fi
+
   chmod a+x .zing
 fi
 
-vim $1
+# If $1 is provided, prepend the execution line to .zing after the shebang
+if [ -n "$1" ]; then
+  TEMP_FILE=$(mktemp)
+
+  echo "#!/bin/bash" > $TEMP_FILE
+  echo "" >> $TEMP_FILE
+
+  echo "./$DIR_NAME/$1" >> $TEMP_FILE
+  echo "exit" >> $TEMP_FILE
+
+  tail -n +2 .zing >> $TEMP_FILE
+
+  mv $TEMP_FILE .zing
+  chmod a+x .zing
+fi
+
+if [ -n "$1" ]; then
+  touch $DIR_NAME/$1
+  chmod a+x $DIR_NAME/$1
 
 
+  if [ "$LANG" = "rails" ]; then
+    echo "#!/usr/bin/env -S /Users/dan/projects/tellspin/bin/rails runner" > $DIR_NAME/$1
+  else
+    echo "#!/bin/bash" > $DIR_NAME/$1
+  fi
+
+  # Open the file in vim
+  vim $DIR_NAME/$1
+fi
