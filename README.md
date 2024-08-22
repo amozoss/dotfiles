@@ -67,6 +67,7 @@ Mac:
 
 brew install fzf
 
+$(brew --prefix)/opt/fzf/install
 ```
 
 setup ripgrep
@@ -81,7 +82,7 @@ Mac:
 
 ```
 
-brew install repgrep
+brew install ripgrep
 
 ```
 
@@ -194,14 +195,22 @@ npm install -g @elm-tooling/elm-language-server
 
 ```
 
+```
+brew install hashicorp/tap/terraform-ls
+```
+
+### oh-my-zsh
+
+```
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+# .zshrc
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+```
+
 ### vscode
 
 ```
 
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false # For VS Code
-
-```
-
-```
 
 ```

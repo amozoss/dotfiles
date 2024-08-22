@@ -30,11 +30,24 @@
       "command": "~/.elixir-ls/release/language_server.sh",
       "filetypes": ["elixir", "eelixir", "heex"],
       "rootPatterns": ["mix.exs"]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
     }
   },
   "go.goplsOptions": {
     "staticcheck": true
   },
+  "emmet.includeLanguages": {
+    "elixir": "html",
+    "phoenix-heex": "html"
+  },
+  "snippets.userSnippetsDirectory": "~/dotfiles/snippets",
+  "snippets.textmateSnippetsRoots": ["~/dotfiles/snippets"],
   "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
   "tailwindCSS.emmetCompletions": true,
   "snippets.ultisnips.pythonPrompt": false

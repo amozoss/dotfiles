@@ -33,6 +33,9 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'           " Set up fzf and fzf.vim
 
+Plug 'mbbill/undotree'
+Plug 'hashivim/vim-terraform'
+
 " Plug 'Konfekt/FastFold'  " Fix slowness with large files
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -60,8 +63,10 @@ set ttyfast
 set lazyredraw
 set updatetime=300
 
+set undolevels=1000
+
 " CoC extensions
-let g:coc_global_extensions = ['coc-prettier', 'coc-elixir', 'coc-tsserver', 'coc-go', 'coc-html', 'coc-css', 'coc-json', '@yaegassy/coc-tailwindcss3', 'coc-solargraph', 'coc-react-refactor', 'coc-snippets', '@yaegassy/coc-volar']
+let g:coc_global_extensions = ['coc-prettier', 'coc-elixir', 'coc-emmet', 'coc-tsserver', 'coc-go', 'coc-html', 'coc-css', 'coc-json', '@yaegassy/coc-tailwindcss3', 'coc-solargraph', 'coc-react-refactor', 'coc-snippets', '@yaegassy/coc-volar']
 
 " Add CoC ESLint if ESLint is installed
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
@@ -72,8 +77,8 @@ endif
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " react-refactor
-xmap <leader>u  <Plug>(coc-codeaction-selected)
-nmap <leader>u  <Plug>(coc-codeaction-selected)
+"xmap <leader>u  <Plug>(coc-codeaction-selected)
+"nmap <leader>u  <Plug>(coc-codeaction-selected)
 
 " ******** Copilot **********
 
@@ -87,7 +92,9 @@ autocmd BufReadPre *
 inoremap <leader>aj <Plug>(copilot-next)
 inoremap <leader>ak <Plug>(copilot-previous)
 inoremap <leader>ad <Plug>(copilot-dismiss)
+inoremap <leader>ad <Plug>(copilot-dismiss)
 
+noremap <leader>u :UndotreeToggle<CR>
 
 " enable copilot for specific filetypes
 let g:copilot_filetypes = {
@@ -143,7 +150,7 @@ au BufRead,BufNewFile mix.lock set filetype=elixir
 "
 let g:vim_ai_chat = {
 \  "options": {
-\    "model": "gpt-4",
+\    "model": "gpt-4o",
 \    "temperature": 0.2,
 \  },
 \}
@@ -226,6 +233,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>dr <Plug>(coc-rename)
+
+nnoremap <leader>gp :GitGutterPreviewHunk<cr>
+
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ae  <Plug>(coc-codeaction)

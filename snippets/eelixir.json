@@ -1,0 +1,7 @@
+{
+  "em_inline": {
+    "prefix": "em",
+    "body": ["<%= ${0} %>"],
+    "description": "Embedded Elixir"
+  }
+}

@@ -33,3 +33,6 @@ bind -x '"\C-p": vim $(fzf);'
 export FZF_TMUX=1
 
 alias ,f="fzf --bind 'enter:execute(vim {1} < /dev/tty)'"
+
+export ERL_AFLAGS="-kernel shell_history enabled"
+
