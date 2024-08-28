@@ -152,7 +152,7 @@
   },
   "insp": {
     "prefix": "insp",
-    "body": "IO.inspect(self(), label: \"${0:label}\")",
+    "body": "IO.inspect(${1:item}, label: \"${2:label}\")",
     "description": "Inspect process with a label"
   },
   "map": {

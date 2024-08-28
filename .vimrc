@@ -147,11 +147,19 @@ au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
 au BufRead,BufNewFile mix.lock set filetype=elixir
 
 " ******* AI ********
-"
+
+let s:initial_chat_prompt =<< trim END
+>>> system
+you are a senior software engineer.
+Code responses preferred. Do not explain code unless asked for. Only for questions related to code
+END
+
+let g:vim_ai_roles_config_file = '/Users/dan/dotfiles/ai-roles.ini'
 let g:vim_ai_chat = {
 \  "options": {
 \    "model": "gpt-4o",
 \    "temperature": 0.2,
+\    "initial_prompt": s:initial_chat_prompt,
 \  },
 \}
 
@@ -168,7 +176,7 @@ xnoremap <leader>e :AIChat<CR>
 nnoremap <leader>e :AIChat<CR>
 
 " redo last AI command
-nnoremap <leader>r :AIRedo<CR>
+" nnoremap <leader>r :AIRedo<CR>
 
 " ******* Coc ***********
 imap <C-l> <Plug>(coc-snippets-expand)
