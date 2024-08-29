@@ -41,6 +41,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'elixir-editors/vim-elixir'
 
+Plug 'preservim/vim-indent-guides'
 Plug 'prisma/vim-prisma'
 
 " All of your Plugins must be added before the following line
@@ -232,7 +233,7 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
 au FileType go nmap <leader>gi <Plug>(go-info)
 
-nnoremap <leader>t :CtrlPTag<cr>
+nnoremap <leader>t :tabnew<cr>
 nnoremap <leader>f :Files<cr>
 
 
@@ -338,17 +339,41 @@ set pastetoggle=<F5>
 set showmode
 
 " Indentation
+
 set autoindent
 set cindent
 set smartindent
 
+nnoremap <leader>i :IndentGuidesToggle<CR>
+let g:indent_guides_enable_on_vim_startup = 0
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size=1
+autocmd VimEnter,Colorscheme * hi IndentGuidesOdd   ctermbg=green
+autocmd VimEnter,Colorscheme * hi IndentGuidesEven  ctermbg=black
+
 " https://superuser.com/questions/550669/my-copy-of-vim-is-running-extremely-slowly-when-i-edit-medium-to-large-eg-1000
 " Can use `Plug 'Konfekt/FastFold'` but files still open slow, so not worth it
 " Folding
-" set foldmethod=syntax
-" set foldlevel=99
 " Enable folding with the z key
-" nmap z za
+set nofoldenable
+
+
+" Function to toggle folding
+function! ToggleFolding()
+  if &foldenable
+    set nofoldenable
+    set foldmethod=
+  else
+    set foldenable
+    set foldmethod=indent
+    set foldlevel=99
+  endif
+endfunction
+
+" Map <leader>h to toggle folding
+nnoremap <leader>h :call ToggleFolding()<CR>
+" Toggle all the folds
+nnoremap <leader>n :set foldlevel=<C-R>=&foldlevel == 0 ? 99 : 0<CR><CR>
 
 " Disable all bells and whistles
 set noerrorbells visualbell t_vb=
@@ -363,6 +388,41 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2 " Number of spaces a tab counts when editing
+
+
+" Map g<number> to jump to tab number <number>
+for i in range(0, 8)
+  execute 'nnoremap g' . i . ' ' . i . 'gt'
+endfor
+
+
+function! Tabline()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    let tab = i + 1
+    let winnr = tabpagewinnr(tab)
+    let buflist = tabpagebuflist(tab)
+    let bufnr = buflist[winnr - 1]
+    let bufname = bufname(bufnr)
+    let bufmodified = getbufvar(bufnr, "&mod")
+
+    let s .= '%' . tab . 'T'
+    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+    let s .= ' ' . tab .':'
+    let s .= (bufname != '' ? '['. fnamemodify(bufname, ':t') . '] ' : '[No Name] ')
+
+    if bufmodified
+      let s .= '[+] '
+    endif
+  endfor
+
+  let s .= '%#TabLineFill#'
+  if (exists("g:tablineclosebutton"))
+    let s .= '%=%999XX'
+  endif
+  return s
+endfunction
+set tabline=%!Tabline()
 
 " Delete empty space from the end of lines on every save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -409,11 +469,14 @@ nnoremap <silent><leader>\ :vs<CR>
 nnoremap <silent><leader>/ :split<CR>
 
 " Faster saving and exiting
-nnoremap <silent><leader>w :w!<CR>
+" nnoremap <silent><leader>w :w!<CR>
 nnoremap <silent><leader>q :q!<CR>
 " nnoremap <silent><leader>x :x<CR>
 " Open Vim configuration file for editing
 nnoremap <silent><leader>2 :e ~/.vimrc<CR>
+
+" cheatsheat
+nnoremap <silent><leader>3 :tabnew ~/dotfiles/vim-notes.md \| vsp +91 <CR>
 " Source Vim configuration file and install plugins
 nnoremap <silent><leader>1 :source ~/.vimrc \| :PlugInstall<CR>
 
