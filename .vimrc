@@ -106,6 +106,7 @@ let g:copilot_filetypes = {
   \ 'eruby': v:true,
   \ 'python': v:true,
   \ 'go': v:true,
+  \ 'erb': v:true,
   \ 'dockerfile': v:true,
   \ 'git': v:true,
   \ 'gitcommit': v:true,

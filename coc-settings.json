@@ -5,7 +5,7 @@
   "diagnostic.infoSign": "?",
   "diagnostic.checkCurrentLine": false,
   "codeLens.enable": false,
-  "[markdown][css][scss][less][svg][dart][html][rust][typescript][typescriptreact][javascriptreact][go][json][elixir][heex][eelixir]": {
+  "[markdown][css][scss][less][svg][dart][html][rust][typescript][typescriptreact][javascriptreact][go][json][elixir][heex][eelixir][erb]": {
     "coc.preferences.formatOnSave": true
   },
   "[javascript][ruby]": {

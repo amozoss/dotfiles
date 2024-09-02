@@ -35,7 +35,7 @@ sudo apt install keychain
 Setup Coc settings
 
 ```
-ln -s dotfiles/coc-settings.json .vim/
+ln -s ../dotfiles/coc-settings.json .vim/
 ```
 
 Setup IEx
