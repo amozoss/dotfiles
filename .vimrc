@@ -154,9 +154,11 @@ let s:initial_chat_prompt =<< trim END
 >>> system
 you are a senior software engineer.
 Code responses preferred. Do not explain code unless asked for. Only for questions related to code
+Show code modifications in a diff
 END
 
 let g:vim_ai_roles_config_file = '/Users/dan/dotfiles/ai-roles.ini'
+"\    "endpoint_url": "http://localhost:4042/v1/chat/completions",
 let g:vim_ai_chat = {
 \  "options": {
 \    "model": "gpt-4o",
@@ -458,6 +460,10 @@ au BufRead,BufNewFile *.feature setlocal spell
 set backspace=indent,eol,start
 
 " +++ Shortcuts +++
+" resize
+
+nnoremap <leader>> :vertical resize +40<CR>
+nnoremap <leader>< :vertical resize -40<CR>
 " Open Buffer
 nnoremap <silent><leader>l :Buffers<CR>
 " Open test file for a current file
