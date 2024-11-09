@@ -207,10 +207,21 @@ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.o
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 ```
 
+## repeat key
+
 ### vscode
 
 ```
-
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false # For VS Code
+```
+
+### cursor
+
+```
+osascript -e 'id of app "Cursor"'
+defaults write <app id goes here> ApplePressAndHoldEnabled -bool false
+```
+
+```
 
 ```
