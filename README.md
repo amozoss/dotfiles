@@ -223,5 +223,8 @@ defaults write <app id goes here> ApplePressAndHoldEnabled -bool false
 ```
 
 ```
+cd /Users/dan/Library/Application Support/Cursor/User
+ln -s /Users/dan/dotfiles/vscode/keybindings.json
+ln -s /Users/dan/dotfiles/vscode/settings.json
 
 ```

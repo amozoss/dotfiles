@@ -1,0 +1,76 @@
+{
+  "vim.leader": ",",
+  "vim.handleKeys": {
+    "<C-h>": false,
+    "<C-j>": false,
+    "<C-k>": false,
+    "<C-l>": false,
+    "<C-b>": false
+  },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // File navigation 
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.files.newUntitledFile"]
+    },
+    // Split management
+    {
+      "before": ["<leader>", "\\"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["workbench.action.splitEditorDown"]
+    },
+    // Buffer/Tab management
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["workbench.action.showAllEditors"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    // Window resizing
+    {
+      "before": ["<leader>", ">"],
+      "commands": ["workbench.action.increaseViewSize"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["editor.action.inlineSuggest.trigger"]
+    },
+    {
+      "before": ["<leader>", "<"],
+      "commands": ["workbench.action.decreaseViewSize"]
+    },
+    // Code actions
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.goToReferences"]
+    },
+   
+    // Quick Open navigation
+    {
+      "before": ["<C-b>", "\""],
+      "commands": ["workbench.action.splitEditorDown"]
+    },
+    {
+      "before": ["<C-b>", "%"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["editor.action.referenceSearch.trigger"]
+
+    }
+  ]
+} 
