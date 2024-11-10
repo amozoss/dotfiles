@@ -4,8 +4,7 @@
     "<C-h>": false,
     "<C-j>": false,
     "<C-k>": false,
-    "<C-l>": false,
-    "<C-b>": false
+    "<C-l>": false
   },
   "vim.normalModeKeyBindingsNonRecursive": [
     // File navigation 
@@ -38,7 +37,7 @@
     // Window resizing
     {
       "before": ["<leader>", ">"],
-      "commands": ["workbench.action.increaseViewSize"]
+      "commands": ["workbench.action.increaseViewSize", "workbench.action.increaseViewSize", "workbench.action.increaseViewSize"]
     },
     {
       "before": ["<leader>", "e"],
@@ -46,7 +45,7 @@
     },
     {
       "before": ["<leader>", "<"],
-      "commands": ["workbench.action.decreaseViewSize"]
+      "commands": ["workbench.action.decreaseViewSize", "workbench.action.decreaseViewSize", "workbench.action.decreaseViewSize"]
     },
     // Code actions
     {
@@ -64,13 +63,36 @@
       "commands": ["workbench.action.splitEditorDown"]
     },
     {
-      "before": ["<C-b>", "%"],
-      "commands": ["workbench.action.splitEditorRight"]
+      "before": ["<leader>", "r"],
+      "commands": ["editor.action.addSelectionToNextFindMatch", "search.action.openNewEditor"]
     },
     {
-      "before": ["<leader>", "r"],
-      "commands": ["editor.action.referenceSearch.trigger"]
-
+      "before": ["<leader>", "n"],
+      "commands": ["search.action.collapseSearchResults"]
+    },
+    {
+      "before": ["<CR>"],
+      "when": "inSearchEditor", 
+      "commands": ["search.action.openInCurrentEditor"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "when": "inSearchEditor",
+      "commands": ["editor.action.peekDefinition"]
+    },
+    {
+      "before": ["z"],
+      "commands": ["editor.toggleFold"]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["editor.toggleAllFolds"]
     }
-  ]
-} 
+  ],
+
+  "workbench.editor.showTabs": false,
+
+  "terminal.integrated.inheritEnv": true,
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.defaultProfile.osx": "zsh"
+}

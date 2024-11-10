@@ -1,19 +1,34 @@
 [
     {
         "key": "ctrl+h",
-        "command": "workbench.action.navigateLeft"
+        "command": "workbench.action.focusLeftGroup"
     },
     {
         "key": "ctrl+l",
-        "command": "workbench.action.navigateRight"
+        "command": "workbench.action.focusRightGroup"
     },
     {
         "key": "ctrl+k",
-        "command": "workbench.action.navigateUp"
+        "command": "workbench.action.focusAboveGroup"
     },
     {
         "key": "ctrl+j",
-        "command": "workbench.action.navigateDown"
+        "command": "workbench.action.focusBelowGroup"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusSideBar",
+        "when": "editorFocus && activeEditorGroupIndex == 1"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.focus",
+        "when": "editorFocus"
     },
     {
         "key": "ctrl+j",
@@ -34,5 +49,35 @@
         "key": "ctrl+k",
         "command": "workbench.action.quickOpenNavigatePrevious",
         "when": "inQuickOpen"
+    },
+    {
+        "key": "cmd+t",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "cmd+t",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "!terminal.active"
+    },
+    {
+        "key": "cmd+s",
+        "command": "workbench.action.files.save",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "search.action.focusNextSearchResult",
+        "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+        "key": "ctrl+k", 
+        "command": "search.action.focusPreviousSearchResult",
+        "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+        "key": "shift+=",
+        "command": "increaseSearchEditorContextLines",
+        "when": "inSearchEditor"
     }
 ] 
