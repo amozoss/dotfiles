@@ -9,90 +9,221 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     // File navigation 
     {
-      "before": ["<leader>", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
     },
     {
-      "before": ["<leader>", "t"],
-      "commands": ["workbench.action.files.newUntitledFile"]
+      "before": [
+        "<leader>",
+        "t"
+      ],
+      "commands": [
+        "workbench.action.files.newUntitledFile"
+      ]
     },
     // Split management
     {
-      "before": ["<leader>", "\\"],
-      "commands": ["workbench.action.splitEditorRight"]
+      "before": [
+        "<leader>",
+        "\\"
+      ],
+      "commands": [
+        "workbench.action.splitEditorRight"
+      ]
     },
     {
-      "before": ["<leader>", "/"],
-      "commands": ["workbench.action.splitEditorDown"]
+      "before": [
+        "<leader>",
+        "/"
+      ],
+      "commands": [
+        "workbench.action.splitEditorDown"
+      ]
     },
     // Buffer/Tab management
     {
-      "before": ["<leader>", "l"],
-      "commands": ["workbench.action.showAllEditors"]
+      "before": [
+        "<leader>",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.showAllEditors"
+      ]
     },
     {
-      "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeActiveEditor"]
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
     },
     // Window resizing
     {
-      "before": ["<leader>", ">"],
-      "commands": ["workbench.action.increaseViewSize", "workbench.action.increaseViewSize", "workbench.action.increaseViewSize"]
+      "before": [
+        "<leader>",
+        ">"
+      ],
+      "commands": [
+        "workbench.action.increaseViewSize",
+        "workbench.action.increaseViewSize",
+        "workbench.action.increaseViewSize"
+      ]
     },
     {
-      "before": ["<leader>", "e"],
-      "commands": ["editor.action.inlineSuggest.trigger"]
+      "before": [
+        "<leader>",
+        "e"
+      ],
+      "commands": [
+        "editor.action.inlineSuggest.trigger"
+      ]
     },
     {
-      "before": ["<leader>", "<"],
-      "commands": ["workbench.action.decreaseViewSize", "workbench.action.decreaseViewSize", "workbench.action.decreaseViewSize"]
+      "before": [
+        "<leader>",
+        "<"
+      ],
+      "commands": [
+        "workbench.action.decreaseViewSize",
+        "workbench.action.decreaseViewSize",
+        "workbench.action.decreaseViewSize"
+      ]
     },
     // Code actions
     {
-      "before": ["g", "d"],
-      "commands": ["editor.action.revealDefinition"]
+      "before": [
+        "g",
+        "d"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
     },
     {
-      "before": ["g", "r"],
-      "commands": ["editor.action.goToReferences"]
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
     },
-   
     // Quick Open navigation
     {
-      "before": ["<C-b>", "\""],
-      "commands": ["workbench.action.splitEditorDown"]
+      "before": [
+        "<C-b>",
+        "\""
+      ],
+      "commands": [
+        "workbench.action.splitEditorDown"
+      ]
     },
     {
-      "before": ["<leader>", "r"],
-      "commands": ["editor.action.addSelectionToNextFindMatch", "search.action.openNewEditor"]
+      "before": [
+        "<leader>",
+        "r"
+      ],
+      "commands": [
+        "editor.action.addSelectionToNextFindMatch",
+        "search.action.openNewEditor"
+      ]
     },
     {
-      "before": ["<leader>", "n"],
-      "commands": ["search.action.collapseSearchResults"]
+      "before": [
+        "<leader>",
+        "n"
+      ],
+      "commands": [
+        "search.action.collapseSearchResults"
+      ]
     },
     {
-      "before": ["<CR>"],
-      "when": "inSearchEditor", 
-      "commands": ["search.action.openInCurrentEditor"]
-    },
-    {
-      "before": ["<leader>", "p"],
+      "before": [
+        "<CR>"
+      ],
       "when": "inSearchEditor",
-      "commands": ["editor.action.peekDefinition"]
+      "commands": [
+        "search.action.openInCurrentEditor"
+      ]
     },
     {
-      "before": ["z"],
-      "commands": ["editor.toggleFold"]
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "when": "inSearchEditor",
+      "commands": [
+        "editor.action.peekDefinition"
+      ]
     },
     {
-      "before": ["<leader>", "h"],
-      "commands": ["editor.toggleAllFolds"]
+      "before": [
+        "z"
+      ],
+      "commands": [
+        "editor.toggleFold"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "h"
+      ],
+      "commands": [
+        "editor.toggleAllFolds"
+      ]
     }
   ],
-
-  "workbench.editor.showTabs": false,
-
+  "workbench.editor.showTabs": "single",
+  "extensions.ignoreRecommendations": false,
+  "extensions.recommendations": [
+    "esbenp.prettier-vscode",
+    "jakebecker.elixir-ls",
+    "emmet-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "golang.go",
+    "formulahendry.auto-close-tag",
+    "ecmel.vscode-html-css",
+    "bradlc.vscode-tailwindcss",
+    "castwide.solargraph",
+    "planbcoding.vscode-react-refactor",
+    "vscode-snippets",
+    "Vue.volar"
+  ],
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "terminal.integrated.inheritEnv": true,
   "terminal.integrated.shellIntegration.enabled": true,
-  "terminal.integrated.defaultProfile.osx": "zsh"
+  "terminal.integrated.defaultProfile.osx": "Solarized Dark",
+  "workbench.colorTheme": "Solarized Dark",
+  "workbench.colorCustomizations": {
+    "[Solarized Dark]": {
+      "editor.background": "#001214",
+      "sideBar.background": "#001214",
+      "terminal.background": "#001214",
+      "activityBar.background": "#001214",
+      "panel.background": "#001214",
+      "statusBar.background": "#001214",
+      "titleBar.activeBackground": "#001214"
+    }
+  },
+  "snippets.userSnippetsDirectory": "~/dotfiles/snippets",
+  "snippets.textmateSnippetsRoots": [
+    "~/dotfiles/snippets"
+  ]
 }
