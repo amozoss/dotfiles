@@ -16,21 +16,6 @@
         "command": "workbench.action.focusBelowGroup"
     },
     {
-        "key": "ctrl+h",
-        "command": "workbench.action.focusSideBar",
-        "when": "editorFocus && activeEditorGroupIndex == 1"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "workbench.action.terminal.focus",
-        "when": "editorFocus"
-    },
-    {
         "key": "ctrl+j",
         "command": "selectNextSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
@@ -56,6 +41,10 @@
         "when": "terminal.active"
     },
     {
+        "key": "alt+t",
+        "command": "workbench.action.terminal.toggleTerminal",
+    },
+    {
         "key": "cmd+t",
         "command": "workbench.action.toggleMaximizedPanel",
         "when": "!terminal.active"
@@ -71,7 +60,7 @@
         "when": "hasSearchResult || inSearchEditor"
     },
     {
-        "key": "ctrl+k", 
+        "key": "ctrl+k",
         "command": "search.action.focusPreviousSearchResult",
         "when": "hasSearchResult || inSearchEditor"
     },
@@ -80,4 +69,4 @@
         "command": "increaseSearchEditorContextLines",
         "when": "inSearchEditor"
     }
-] 
+]

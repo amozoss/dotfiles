@@ -154,7 +154,6 @@ let s:initial_chat_prompt =<< trim END
 >>> system
 you are a senior software engineer.
 Code responses preferred. Do not explain code unless asked for. Only for questions related to code
-Show code modifications in a diff
 END
 
 let g:vim_ai_roles_config_file = '/Users/dan/dotfiles/ai-roles.ini'
@@ -247,6 +246,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <leader>dr <Plug>(coc-rename)
 
 nnoremap <leader>gp :GitGutterPreviewHunk<cr>
+nnoremap <leader>gu :GitGutterUndoHunk<cr>
 
 
 " Remap keys for applying codeAction to the current buffer.

@@ -115,6 +115,16 @@
         "editor.action.goToReferences"
       ]
     },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
+    },
     // Quick Open navigation
     {
       "before": [
@@ -208,7 +218,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "terminal.integrated.inheritEnv": true,
-  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.defaultProfile.osx": "Solarized Dark",
   "workbench.colorTheme": "Solarized Dark",
   "workbench.colorCustomizations": {
@@ -225,5 +235,8 @@
   "snippets.userSnippetsDirectory": "~/dotfiles/snippets",
   "snippets.textmateSnippetsRoots": [
     "~/dotfiles/snippets"
-  ]
+  ],
+  "cursor.chat.showSuggestedFiles": true,
+  "cursor.cmdk.useThemedDiffBackground": true,
+  "cursor.diffs.useCharacterLevelDiffs": true
 }
