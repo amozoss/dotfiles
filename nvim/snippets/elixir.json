@@ -1,0 +1,18 @@
+{
+  "describe": {
+    "prefix": "desc",
+    "body": [
+      "describe \"${1:context}\" do",
+      "  $0",
+      "end"
+    ]
+  },
+  "test": {
+    "prefix": "test",
+    "body": [
+      "test \"${1:description}\" do",
+      "  $0",
+      "end"
+    ]
+  }
+} 

@@ -1,0 +1,18 @@
+{
+  "if": {
+    "prefix": "if",
+    "body": [
+      "<%=if ${1:condition} do %>",
+      "  $0",
+      "<% end %>"
+    ]
+  },
+  "for": {
+    "prefix": "for",
+    "body": [
+      "<%=for ${1:item} <- ${2:items} do %>",
+      "  $0",
+      "<% end %>"
+    ]
+  }
+} 

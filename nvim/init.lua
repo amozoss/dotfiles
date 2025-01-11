@@ -1,8 +1,32 @@
-
--- Set leader key
-vim.g.mapleader = ','
-
--- Import other configuration modules
-require('plugins')
+-- Load core configurations
 require('options')
 require('keymaps')
+require('plugins')
+require('autocmds')
+
+-- Load plugin configurations
+require('config.copilot')
+require('config.lsp')
+require('config.go')
+require('config.theme')
+require('config.fzf')
+require('config.test')
+require('config.ai')
+require('config.fold')
+require('config.tabline')
+require('config.private')
+require('config.snippets')
+require('config.lang')
+require('config.tmux')
+require('config.indent')
+require('config.cursor')
+require('config.whitespace')
+require('config.search')
+require('config.commands')
+require('config.completion')
+require('config.windows')
+require('config.terminal')
+require('config.buffer')
+
+require('config.terminal')
+require('config.buffer') 
