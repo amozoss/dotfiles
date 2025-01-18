@@ -189,6 +189,46 @@
       "commands": [
         "editor.toggleAllFolds"
       ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "z"
+      ],
+      "commands": [
+        "workbench.action.toggleMaximizedPanel",
+                "workbench.action.toggleAuxiliaryBar"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "u"
+      ],
+      "commands": [
+        "git.revertSelectedRanges"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "p"
+      ],
+      "commands": [
+        "git.openChange"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "b"
+      ],
+      "commands": [
+        "gitlens.toggleFileBlame"
+      ]
     }
   ],
   "workbench.editor.showTabs": "single",

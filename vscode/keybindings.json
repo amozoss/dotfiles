@@ -38,7 +38,6 @@
     {
         "key": "cmd+t",
         "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
     },
     {
         "key": "alt+t",
@@ -68,5 +67,18 @@
         "key": "shift+=",
         "command": "increaseSearchEditorContextLines",
         "when": "inSearchEditor"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+5",
+        "command": "workbench.action.toggleAuxiliaryBar"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "workbench.action.closePanel",
+        "when": "panelFocus && activePanel == 'workbench.panel.chat'"
     }
 ]
