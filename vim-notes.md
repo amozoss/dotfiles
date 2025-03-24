@@ -89,3 +89,25 @@ zO " Open all folds under the cursor recursively
 q: : Open command-line window for command history
 q/ : Open command-line window for search history
 Ctrl + f : Open command-line window for editing the command
+
+## Tmux
+
+```
+Ctrl + b c # Create a new window
+Ctrl + b , # Rename the current window
+Ctrl + b w # List all windows
+Ctrl + b p # Switch to the previous window
+Ctrl + b & # Kill the current window
+Ctrl + b % # Split the current pane vertically
+Ctrl + b " # Split the current pane horizontally
+Ctrl + b x # Kill the current pane
+Ctrl + b o # Switch to the next pane
+Ctrl + b q # Display pane numbers
+Ctrl + b z # Toggle pane zoom
+Ctrl + b [ # Enter copy mode
+Ctrl + b ] # Paste buffer
+Ctrl + b d # Detach from the current session
+Ctrl + b s # List all sessions
+Ctrl + b $ # Rename the current session
+Ctrl + b : # Enter command mode
+```

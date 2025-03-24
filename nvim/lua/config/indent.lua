@@ -4,7 +4,7 @@ vim.g.indent_guides_auto_colors = 0
 vim.g.indent_guides_guide_size = 1
 
 -- Set custom colors for indent guides
-vim.api.nvim_create_autocmd("VimEnter,Colorscheme", {
+vim.api.nvim_create_autocmd({"VimEnter", "Colorscheme"}, {
   callback = function()
     vim.cmd([[
       hi IndentGuidesOdd  ctermbg=green

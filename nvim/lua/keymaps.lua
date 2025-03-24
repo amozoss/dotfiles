@@ -23,8 +23,11 @@ map('n', '<leader>gp', ':GitGutterPreviewHunk<CR>', opts)
 map('n', '<leader>gu', ':GitGutterUndoHunk<CR>', opts)
 map('n', '<leader>gb', ':Git blame<CR>', opts)
 
+-- ChatGPT mappings
+map('n', '<leader>e', ':ChatGPT<CR>', opts)
+map('v', '<leader>e', ':ChatGPTEditWithInstructions<CR>', opts)
+
 -- CoC mappings
-map('n', 'gd', '<Plug>(coc-definition)', {})
 map('n', 'gy', '<Plug>(coc-type-definition)', {})
 map('n', 'gi', '<Plug>(coc-implementation)', {})
 map('n', 'gr', '<Plug>(coc-references)', {})
@@ -41,3 +44,12 @@ map('i', '<leader>ad', '<Plug>(copilot-dismiss)', {})
 for i = 0, 8 do
   map('n', 'g' .. i, i .. 'gt', opts)
 end 
+
+-- General keymaps
+vim.keymap.set('n', '<leader>w', ':w!<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
+
+-- Copilot keymaps
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
+vim.keymap.set('i', '<C-H>', 'copilot#Previous()', { silent = true, expr = true })
+vim.keymap.set('i', '<C-L>', 'copilot#Next()', { silent = true, expr = true }) 

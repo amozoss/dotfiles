@@ -1,25 +1,26 @@
--- Theme settings
+-- Enable true color support
+vim.opt.termguicolors = true
+
+-- Set colorscheme to Solarized
+vim.opt.background = 'dark'  -- or 'light' if you prefer
 vim.cmd([[
   syntax enable
   set background=dark
-  colorscheme flattened_dark
+  source ~/dotfiles/plugins/solarized.lua
 ]])
 
--- Airline settings
-vim.g.airline_theme = 'solarized'
-vim.g.airline_solarized_bg = 'dark'
-vim.g.airline_powerline_fonts = 1
+-- Ensure colors work properly in tmux
+vim.cmd([[
+  if exists('$TMUX')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  endif
+]])
 
--- IndentGuides settings
-vim.g.indent_guides_enable_on_vim_startup = 0
-vim.g.indent_guides_auto_colors = 0
-vim.g.indent_guides_guide_size = 1
-
-vim.api.nvim_create_autocmd({"VimEnter", "Colorscheme"}, {
-  callback = function()
-    vim.cmd([[
-      hi IndentGuidesOdd  ctermbg=green
-      hi IndentGuidesEven ctermbg=black
-    ]])
-  end,
-}) 
+-- Optional: customize specific highlights
+vim.cmd([[
+  hi Normal guibg=NONE ctermbg=NONE
+  hi LineNr guibg=NONE ctermbg=NONE
+  hi SignColumn guibg=NONE ctermbg=NONE
+  hi VertSplit guibg=NONE ctermbg=NONE
+]]) 

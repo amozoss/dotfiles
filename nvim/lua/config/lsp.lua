@@ -23,14 +23,12 @@ end
 
 -- Configure LSP servers
 local servers = {
-  'tsserver',    -- TypeScript/JavaScript
   'gopls',       -- Go
   'solargraph',  -- Ruby
   'elixirls',    -- Elixir
   'html',        -- HTML
   'cssls',       -- CSS
   'jsonls',      -- JSON
-  'tailwindcss', -- Tailwind CSS
 }
 
 for _, lsp in ipairs(servers) do
@@ -43,9 +41,28 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- TypeScript specific configuration
+nvim_lsp.ts_ls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  root_dir = nvim_lsp.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+})
+
 -- Elixir LS specific configuration
 nvim_lsp.elixirls.setup {
   cmd = { vim.fn.expand("~/.elixir-ls/release/language_server.sh") },
   on_attach = on_attach,
   capabilities = capabilities,
-} 
+}
+
+-- Tailwind specific configuration
+require('lspconfig').tailwindcss.setup({
+  cmd = { "tailwindcss-language-server", "--stdio" },
+  filetypes = { "html", "elixir", "eelixir", "heex", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  root_dir = require('lspconfig').util.root_pattern('tailwind.config.js', 'tailwind.config.ts'),
+  on_attach = on_attach,
+  capabilities = capabilities,
+}) 

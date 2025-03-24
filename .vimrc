@@ -247,6 +247,7 @@ nmap <leader>dr <Plug>(coc-rename)
 
 nnoremap <leader>gp :GitGutterPreviewHunk<cr>
 nnoremap <leader>gu :GitGutterUndoHunk<cr>
+nnoremap <leader>gb :Git blame<cr>
 
 
 " Remap keys for applying codeAction to the current buffer.

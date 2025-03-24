@@ -27,7 +27,6 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind.nvim'
   
   -- Your existing plugins (excluding coc.nvim)
-  use 'romainl/flattened'
   use 'christoomey/vim-tmux-navigator'
   use 'edkolev/tmuxline.vim'
   use 'vim-airline/vim-airline'
@@ -43,27 +42,45 @@ return require('packer').startup(function(use)
   use 'maxmellon/vim-jsx-pretty'
   use 'jparise/vim-graphql'
   use 'styled-components/vim-styled-components'
-  use {
-    'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'canary',
-    requires = {
-      'github/copilot.vim',
-      'nvim-lua/plenary.nvim'
-    },
-    config = function()
-      require('CopilotChat').setup({
-        debug = false,
-        model = 'gpt-4',
-        temperature = 0.2,
-      })
-    end
-  }
   use 'github/copilot.vim'
   use 'kchmck/vim-coffee-script'
+  use({
+    "jackMort/ChatGPT.nvim",
+    branch = 'main',
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    },
+    config = function()
+      require("chatgpt").setup({
+        api_key_cmd = "cat ~/.config/openai.token",
+        model = "gpt-4",
+        keymaps = {
+          close = { "<C-c>" },
+          submit = "<C-Enter>",
+          yank_last = "<C-y>",
+          yank_last_code = "<C-k>",
+          scroll_up = "<C-u>",
+          scroll_down = "<C-d>",
+          toggle_settings = "<C-o>",
+          new_session = "<C-n>",
+          cycle_windows = "<Tab>",
+        },
+      })
+    end
+  })
   
+  -- Telescope and dependencies
   use {
-    'junegunn/fzf.vim',
-    requires = { 'junegunn/fzf', run = ':call fzf#install()' }
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.5',
+    requires = { 
+      {'nvim-lua/plenary.nvim'}
+    },
+    config = function()
+      require('config.telescope')
+    end
   }
   
   use 'mbbill/undotree'
@@ -71,6 +88,15 @@ return require('packer').startup(function(use)
   use 'elixir-editors/vim-elixir'
   use 'preservim/vim-indent-guides'
   use 'prisma/vim-prisma'
+  
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
+  }
 
   if packer_bootstrap then
     require('packer').sync()
