@@ -80,5 +80,9 @@
         "key": "ctrl+[",
         "command": "workbench.action.closePanel",
         "when": "panelFocus && activePanel == 'workbench.panel.chat'"
+    },
+    {
+        "key": "cmd+i",
+        "command": "composerMode.agent"
     }
 ]
