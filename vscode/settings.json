@@ -182,5 +182,9 @@
   "window.dialogStyle": "custom",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "elixirLS.projectDir": "api",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
