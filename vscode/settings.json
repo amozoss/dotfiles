@@ -131,7 +131,7 @@
     }
   ],
   "workbench.editor.showTabs": "single",
-  "extensions.ignoreRecommendations": false,
+  "extensions.ignoreRecommendations": true,
   "extensions.recommendations": [
     "esbenp.prettier-vscode",
     "jakebecker.elixir-ls",

@@ -38,15 +38,22 @@
     {
         "key": "cmd+t",
         "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "cmd+t",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.terminal.toggleTerminal",
+                "workbench.action.toggleMaximizedPanel"
+            ]
+        },
+        "when": "!terminal.active"
     },
     {
         "key": "alt+t",
         "command": "workbench.action.terminal.toggleTerminal",
-    },
-    {
-        "key": "cmd+t",
-        "command": "workbench.action.toggleMaximizedPanel",
-        "when": "!terminal.active"
     },
     {
         "key": "cmd+s",
