@@ -8,7 +8,7 @@ Setup `~/.gitconfig`:
   name = myname
 [core]
   editor = /usr/bin/vim
-  excludesfile = ~/.global_gitignore
+  excludesfile = ~/dotfiles/.global_gitignore
 ```
 
 Setup vim-plug:

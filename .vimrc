@@ -38,7 +38,10 @@ Plug 'hashivim/vim-terraform'
 
 " Plug 'Konfekt/FastFold'  " Fix slowness with large files
 
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'elixir-editors/vim-elixir'
 
 Plug 'preservim/vim-indent-guides'
@@ -49,7 +52,6 @@ call plug#end()              " required
 filetype plugin indent on    " required
 
 let mapleader = ","
-let g:coc_debug = 1
 
 
 " Look and Feel settings
@@ -58,6 +60,15 @@ set background=dark
 " https://github.com/romainl/flattened
 colorscheme flattened_dark
 "colorscheme flattened_light
+"
+if exists('$TERM_GUI_COLORS') && $TERM_GUI_COLORS == '1'
+  set termguicolors
+  " tmux uses screen*-style terminfo without RGB entries; force xterm 24-bit sequences
+  if exists('$TMUX')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  endif
+endif
 
 set wildmenu " when opening a file with e.g. :e ~/.vim<TAB> there is a graphical menu of all the matches
 set ttyfast
@@ -66,20 +77,25 @@ set updatetime=300
 
 set undolevels=1000
 
-" CoC extensions
-let g:coc_global_extensions = ['coc-prettier', 'coc-elixir', 'coc-emmet', 'coc-tsserver', 'coc-go', 'coc-html', 'coc-css', 'coc-json', '@yaegassy/coc-tailwindcss3', 'coc-solargraph', 'coc-react-refactor', 'coc-snippets', '@yaegassy/coc-volar']
+"
+" ******* LSP (vim-lsp) ***********
+"
+let g:lsp_log_verbose = 0
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
 
-" Add CoC ESLint if ESLint is installed
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-"  let g:coc_global_extensions += ['coc-eslint']
+if executable('ruby-lsp')
+  augroup RubyLsp
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'ruby-lsp',
+          \ 'cmd': {server_info->['ruby-lsp']},
+          \ 'allowlist': ['ruby', 'eruby'],
+          \ })
+  augroup END
 endif
 
-" Prettier
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-
 " react-refactor
-"xmap <leader>u  <Plug>(coc-codeaction-selected)
-"nmap <leader>u  <Plug>(coc-codeaction-selected)
 
 " ******** Copilot **********
 
@@ -181,24 +197,6 @@ nnoremap <leader>e :AIChat<CR>
 " redo last AI command
 " nnoremap <leader>r :AIRedo<CR>
 
-" ******* Coc ***********
-imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-" Use <leader>x for convert visual selected code to snippet
-xmap <leader>x  <Plug>(coc-convert-snippet)
-
 " undo file
 set undofile
 set undodir=~/.vim/undo
@@ -239,26 +237,21 @@ nnoremap <leader>t :tabnew<cr>
 nnoremap <leader>f :Files<cr>
 
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>dr <Plug>(coc-rename)
+nnoremap <silent> gd :LspDefinition<CR>
+nnoremap <silent> gy :LspTypeDefinition<CR>
+nnoremap <silent> gi :LspImplementation<CR>
+nnoremap <silent> gr :LspReferences<CR>
+nnoremap <silent> <leader>dr :LspRename<CR>
 
 nnoremap <leader>gp :GitGutterPreviewHunk<cr>
 nnoremap <leader>gu :GitGutterUndoHunk<cr>
 nnoremap <leader>gb :Git blame<cr>
 
 
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ae  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nnoremap <silent> <leader>ae :LspCodeAction<CR>
+nnoremap <silent> <leader>qf :LspDocumentFormat<CR>
 
-" Format
-nmap <leader>ll   :CocCommand prettier.formatFile<CR>
-
-" disable all linters as that is taken care of by coc.nvim
+" disable all linters as that is taken care of by the LSP (and external tooling)
 let g:go_diagnostics_enabled = 0
 let g:go_metalinter_enabled = []
 
@@ -305,23 +298,11 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
-" Use c-j for trigger completion with characters ahead and navigate
-" NOTE: There's always complete item selected by default, you may want to
-" enable no select by `"suggest.noselect": true` in your configuration file
-inoremap <silent> <expr><c-j>
-       \ coc#pum#visible() ? coc#pum#next(1) :
-       \ CheckBackspace() ? "\<C-j>" :
-       \ coc#refresh()
-inoremap <expr><c-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_popup_delay = 200
 
-" Map <tab> for trigger completion, completion confirm, snippet expand and jump
-" like VSCode:
-inoremap <silent><expr> <TAB>
-	\ coc#pum#visible() ? coc#_select_confirm() :
-	\ coc#expandableOrJumpable() ?
-	\ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-	\ CheckBackspace() ? "\<TAB>" :
-	\ coc#refresh()
+inoremap <expr> <TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -506,13 +487,8 @@ nnoremap <silent><leader>; :TestNearest<CR>
 " Fix some weird error with Fugitive
 let g:fugitive_pty = 0
 
-" Fix syntax highlight for Coc plugin floating errors
-hi CocErrorFloat guifg=Magenta guibg=Magenta
-
+"
 " 0-15 numbers match ANSI colors in Terminal preferences https://jeffkreeftmeijer.com/vim-16-color/
-hi CocMenuSel ctermbg=0 ctermfg=7
-hi CocFloating    ctermbg=8 ctermfg=10
-hi CocFloatThumb  ctermbg=8 ctermfg=10
 
 " Use templates https://vimtricks.com/p/automated-file-templates/
 autocmd BufNewFile *.tsx             0r ~/dotfiles/skeletons/typescript-react.tsx
@@ -527,8 +503,8 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
+  elseif exists(':LspHover')
+    execute 'LspHover'
   else
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
