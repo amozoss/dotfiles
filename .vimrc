@@ -172,7 +172,7 @@ you are a senior software engineer.
 Code responses preferred. Do not explain code unless asked for. Only for questions related to code
 END
 
-let g:vim_ai_roles_config_file = '/Users/dan/dotfiles/ai-roles.ini'
+let g:vim_ai_roles_config_file = '/home/dan/dotfiles/ai-roles.ini'
 "\    "endpoint_url": "http://localhost:4042/v1/chat/completions",
 let g:vim_ai_chat = {
 \  "options": {
