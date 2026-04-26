@@ -228,3 +228,10 @@ ln -s /Users/dan/dotfiles/vscode/keybindings.json
 ln -s /Users/dan/dotfiles/vscode/settings.json
 
 ```
+
+
+# TERMUX
+powerline fonts
+```
+mkdir -p ~/.termux && curl -fLo ~/.termux/font.ttf https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf && termux-reload-settings
+```
