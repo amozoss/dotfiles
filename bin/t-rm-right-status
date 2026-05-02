@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -z "${TMUX:-}" ]]; then
+  echo "t-rm-right-status: not running inside tmux" >&2
+  exit 1
+fi
+
+session="$(tmux display-message -p '#S')"
+
+# status-right is a session option; target only the attached session.
+tmux set-option -t "${session}" status-right ''
+tmux set-option -t "${session}" status-right-length 0
+tmux refresh-client -S
+
