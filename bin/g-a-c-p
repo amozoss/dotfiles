@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  echo "Usage: $(basename "$0") <commit message>" >&2
+  echo "Same as g-c-p: git add -A, git commit -m \"…\", git push." >&2
+}
+
+if [[ $# -lt 1 ]]; then
+  usage
+  exit 2
+fi
+
+exec "$(dirname "$0")/g-c-p" "$@"

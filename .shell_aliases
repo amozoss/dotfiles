@@ -5,8 +5,17 @@ alias g-s='git status'
 alias g-a='git add'
 alias g-ap='git add -p'
 alias g-p='git push'
+# Log — g-l / g-lo / g-lg … (pass extra args: g-lo -5, g-lg main..HEAD)
+alias g-l='git log'
+alias g-lo='git log --oneline'
+alias g-lg='git log --oneline --graph --decorate'
+alias g-la='git log --oneline --graph --decorate --all'
+alias g-lst='git log --stat'
+alias g-lr='git log --oneline -20'
+alias g-l1='git log -1'
+alias g-l1p='git log -1 -p'
 # Commit with message (staged only): g-c <msg>  (~/dotfiles/bin)
-# Stage + commit + push: g-c-p <msg>  (~/dotfiles/bin)
+# Add all + commit + push: g-a-c-p <msg>  or  g-c-p <msg>  (~/dotfiles/bin; same)
 # Backdated commits: g-1-ago … g-48-ago  (~/dotfiles/bin; GNU date)
 
 # Sessions
