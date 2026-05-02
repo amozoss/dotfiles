@@ -15,6 +15,7 @@ alias g-lr='git log --oneline -20'
 alias g-l1='git log -1'
 alias g-l1p='git log -1 -p'
 # Commit with message (staged only): g-c <msg>  (~/dotfiles/bin)
+# Add all + commit: g-a-c <msg>  (~/dotfiles/bin)
 # Add all + commit + push: g-a-c-p <msg>  or  g-c-p <msg>  (~/dotfiles/bin; same)
 # Backdated commits: g-1-ago … g-48-ago  (~/dotfiles/bin; GNU date)
 
