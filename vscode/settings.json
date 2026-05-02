@@ -4,43 +4,43 @@
     "<C-h>": false,
     "<C-j>": false,
     "<C-k>": false,
-    "<C-l>": false
+    "<C-l>": false,
   },
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["u"],
-      "commands": ["undo"]
+      "commands": ["undo"],
     },
     {
       "before": ["U"],
-      "commands": ["redo"]
+      "commands": ["redo"],
     },
     // File navigation
     {
       "before": ["<leader>", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "commands": ["workbench.action.quickOpen"],
     },
     {
       "before": ["<leader>", "t"],
-      "commands": ["workbench.action.files.newUntitledFile"]
+      "commands": ["workbench.action.files.newUntitledFile"],
     },
     // Split management
     {
       "before": ["<leader>", "\\"],
-      "commands": ["workbench.action.splitEditorRight"]
+      "commands": ["workbench.action.splitEditorRight"],
     },
     {
       "before": ["<leader>", "/"],
-      "commands": ["workbench.action.splitEditorDown"]
+      "commands": ["workbench.action.splitEditorDown"],
     },
     // Buffer/Tab management
     {
       "before": ["<leader>", "l"],
-      "commands": ["workbench.action.showAllEditors"]
+      "commands": ["workbench.action.showAllEditors"],
     },
     {
       "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeActiveEditor"]
+      "commands": ["workbench.action.closeActiveEditor"],
     },
     // Window resizing
     {
@@ -48,87 +48,87 @@
       "commands": [
         "workbench.action.increaseViewSize",
         "workbench.action.increaseViewSize",
-        "workbench.action.increaseViewSize"
-      ]
+        "workbench.action.increaseViewSize",
+      ],
     },
     {
       "before": ["<leader>", "e"],
-      "commands": ["editor.action.inlineSuggest.trigger"]
+      "commands": ["editor.action.inlineSuggest.trigger"],
     },
     {
       "before": ["<leader>", "<"],
       "commands": [
         "workbench.action.decreaseViewSize",
         "workbench.action.decreaseViewSize",
-        "workbench.action.decreaseViewSize"
-      ]
+        "workbench.action.decreaseViewSize",
+      ],
     },
     // Code actions
     {
       "before": ["g", "d"],
-      "commands": ["editor.action.revealDefinition"]
+      "commands": ["editor.action.revealDefinition"],
     },
     {
       "before": ["g", "r"],
-      "commands": ["editor.action.goToReferences"]
+      "commands": ["editor.action.goToReferences"],
     },
     {
       "before": ["<leader>", "g", "r"],
-      "commands": ["editor.action.goToReferences"]
+      "commands": ["editor.action.goToReferences"],
     },
     // Quick Open navigation
     {
       "before": ["<C-b>", "\""],
-      "commands": ["workbench.action.splitEditorDown"]
+      "commands": ["workbench.action.splitEditorDown"],
     },
     {
       "before": ["<leader>", "r"],
       "commands": [
         "editor.action.addSelectionToNextFindMatch",
-        "search.action.openNewEditor"
-      ]
+        "search.action.openNewEditor",
+      ],
     },
     {
       "before": ["<leader>", "n"],
-      "commands": ["search.action.collapseSearchResults"]
+      "commands": ["search.action.collapseSearchResults"],
     },
     {
       "before": ["<CR>"],
       "when": "inSearchEditor",
-      "commands": ["search.action.openInCurrentEditor"]
+      "commands": ["search.action.openInCurrentEditor"],
     },
     {
       "before": ["<leader>", "p"],
       "when": "inSearchEditor",
-      "commands": ["editor.action.peekDefinition"]
+      "commands": ["editor.action.peekDefinition"],
     },
     {
       "before": ["z"],
-      "commands": ["editor.toggleFold"]
+      "commands": ["editor.toggleFold"],
     },
     {
       "before": ["<leader>", "h"],
-      "commands": ["editor.toggleAllFolds"]
+      "commands": ["editor.toggleAllFolds"],
     },
     {
       "before": ["<leader>", "z"],
       "commands": [
         "workbench.action.toggleMaximizedPanel",
-        "workbench.action.toggleAuxiliaryBar"
-      ]
+        "workbench.action.toggleAuxiliaryBar",
+      ],
     },
     {
       "before": ["<leader>", "g", "u"],
-      "commands": ["git.revertSelectedRanges"]
+      "commands": ["git.revertSelectedRanges"],
     },
     {
       "before": ["<leader>", "g", "p"],
-      "commands": ["git.openChange"]
+      "commands": ["git.openChange"],
     },
     {
       "before": ["<leader>", "g", "b"],
-      "commands": ["gitlens.toggleFileBlame"]
-    }
+      "commands": ["gitlens.toggleFileBlame"],
+    },
   ],
   "workbench.editor.showTabs": "single",
   "extensions.ignoreRecommendations": true,
@@ -144,17 +144,17 @@
     "castwide.solargraph",
     "planbcoding.vscode-react-refactor",
     "vscode-snippets",
-    "Vue.volar"
+    "Vue.volar",
   ],
   "editor.formatOnSave": true,
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "window.title": "${folderPath}${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
   "rubyLsp.formatter": "rubocop",
@@ -170,8 +170,8 @@
       "activityBar.background": "#001214",
       "panel.background": "#001214",
       "statusBar.background": "#001214",
-      "titleBar.activeBackground": "#001214"
-    }
+      "titleBar.activeBackground": "#001214",
+    },
   },
   "snippets.userSnippetsDirectory": "~/dotfiles/snippets",
   "snippets.textmateSnippetsRoots": ["~/dotfiles/snippets"],
@@ -181,10 +181,11 @@
   "salesforcedx-vscode-apex.java.home": "/opt/homebrew/Cellar/openjdk@21/21.0.5/libexec/openjdk.jdk/Contents/Home",
   "window.dialogStyle": "custom",
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "elixirLS.projectDir": "api",
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "expert.server.releasePathOverride": "/Users/dan/.local/bin/start_expert.sh",
 }
