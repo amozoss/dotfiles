@@ -1,0 +1,24 @@
+# Sourced by ~/.bashrc and ~/.zshrc — POSIX alias syntax only.
+
+# Git — shortcuts
+alias g-s='git status'
+alias g-a='git add'
+alias g-ap='git add -p'
+alias g-p='git push'
+# Commit with message (staged only): g-c <msg>  (~/dotfiles/bin)
+# Stage + commit + push: g-c-p <msg>  (~/dotfiles/bin)
+# Backdated commits: g-1-ago … g-48-ago  (~/dotfiles/bin; GNU date)
+
+# Sessions
+alias t-ls='tmux list-sessions'
+alias t-a='tmux attach -t'
+alias t-at='tmux attach'
+alias t-ad='tmux attach -d -t'
+alias t-n='tmux new'
+alias t-ns='tmux new-session -s'
+alias t-k='tmux kill-session -t'
+alias t-kall='tmux kill-server'
+
+# Client / config
+alias t-d='tmux detach-client'
+alias t-src='tmux source-file ~/.tmux.conf'

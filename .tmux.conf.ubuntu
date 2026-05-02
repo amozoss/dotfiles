@@ -37,7 +37,7 @@ if-shell "tmux show-environment -g TERM_GUI_COLORS 2>/dev/null | grep -q '^TERM_
    set -g status-left-length 60 \;\
    set -g status-right-length 80 \;\
    set -g status-left '#[fg=colour235,bg=colour64,bold] #S #[fg=colour244,bg=colour235,nobold]' \;\
-   set -g status-right '#[fg=colour244,bg=colour235] %Y-%m-%d %H:%M #[fg=colour235,bg=colour235] '" \
+   set -g status-right ''" \
   "set -g status-style 'fg=default,bg=default' \;\
    set -g message-style 'fg=default,bg=default' \;\
    set -g message-command-style 'fg=default,bg=default' \;\
@@ -48,7 +48,7 @@ if-shell "tmux show-environment -g TERM_GUI_COLORS 2>/dev/null | grep -q '^TERM_
    set -g pane-border-style 'fg=default' \;\
    set -g pane-active-border-style 'fg=default' \;\
    set -g status-left '#S' \;\
-   set -g status-right '%Y-%m-%d %H:%M' \;\
+   set -g status-right '' \;\
    set -g window-status-separator ' ' \;\
    set -g window-status-format '#I:#W' \;\
    set -g window-status-current-format '#I:#W'"
