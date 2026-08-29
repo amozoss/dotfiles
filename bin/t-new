@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  echo "usage: t-new [-c directory] [session-name]" >&2
+  exit 1
+}
+
+dir=""
+session=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -c)
+      [[ $# -ge 2 ]] || usage
+      dir="$2"
+      shift 2
+      ;;
+    -h|--help)
+      usage
+      ;;
+    -*)
+      usage
+      ;;
+    *)
+      [[ -z "$session" ]] || usage
+      session="$1"
+      shift
+      ;;
+  esac
+done
+
+if [[ -n "$dir" && ! -d "$dir" ]]; then
+  echo "t-new: not a directory: $dir" >&2
+  exit 1
+fi
+
+c_args=()
+if [[ -n "$dir" ]]; then
+  c_args=(-c "$dir")
+fi
+
+if [[ -n "$session" ]]; then
+  tmux new-session -d -s "$session" "${c_args[@]}"
+else
+  tmux new-session -d "${c_args[@]}"
+  session="$(tmux display-message -p '#S')"
+fi
+
+tmux new-window -t "$session" "${c_args[@]}"
+tmux new-window -t "$session" "${c_args[@]}"
+tmux rename-window -t "$session:1" agent
+tmux attach -t "$session"
