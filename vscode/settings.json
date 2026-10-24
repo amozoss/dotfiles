@@ -188,4 +188,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "expert.server.releasePathOverride": "/Users/dan/.local/bin/start_expert.sh",
+  "window.autoDetectColorScheme": false,
 }

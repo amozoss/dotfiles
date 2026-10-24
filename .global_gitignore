@@ -6,3 +6,5 @@ GPUCache
 .byebug_history
 
 zings/
+
+**/.claude/settings.local.json

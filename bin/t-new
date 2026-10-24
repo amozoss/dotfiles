@@ -30,24 +30,28 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ -n "$dir" && ! -d "$dir" ]]; then
+if [[ -z "$dir" ]]; then
+  dir="$PWD"
+elif [[ ! -d "$dir" ]]; then
   echo "t-new: not a directory: $dir" >&2
   exit 1
 fi
 
-c_args=()
-if [[ -n "$dir" ]]; then
-  c_args=(-c "$dir")
-fi
-
+# Always pass -c so we never expand an empty array (bash 3.2 + set -u
+# treats "${arr[@]}" as unbound). =name: is an exact session target so
+# numeric names like 0 are not treated as window indexes.
 if [[ -n "$session" ]]; then
-  tmux new-session -d -s "$session" "${c_args[@]}"
+  tmux new-session -d -s "$session" -c "$dir"
 else
-  tmux new-session -d "${c_args[@]}"
-  session="$(tmux display-message -p '#S')"
+  session="$(tmux new-session -d -c "$dir" -P -F '#S')"
 fi
 
-tmux new-window -t "$session" "${c_args[@]}"
-tmux new-window -t "$session" "${c_args[@]}"
-tmux rename-window -t "$session:1" agent
-tmux attach -t "$session"
+tmux new-window -t "=${session}:" -c "$dir"
+tmux new-window -t "=${session}:" -c "$dir"
+tmux rename-window -t "=${session}:1" agent
+
+if [[ -n "${TMUX:-}" ]]; then
+  tmux switch-client -t "=${session}"
+else
+  exec tmux attach -t "=${session}"
+fi
